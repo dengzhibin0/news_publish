@@ -24,4 +24,11 @@ public class RoleServiceImpl implements RoleService {
         List<Role> roleList=roleDao.selectRoleList();
         return roleList;
     }
+
+    @Override
+    public Role findRoleWithUsersByRoleId(Integer roleId) {
+        return null;
+//        return roleDao.selectRoleList();  //TODO
+//        return null;
+    }
 }

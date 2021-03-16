@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <%
@@ -79,7 +79,7 @@ request.setCharacterEncoding("UTF-8");
 									&nbsp;|&nbsp;<a href='#' onclick="disableUser(${user.userId})">禁用</a>
 			                    </c:if> 
 			                    <c:if test="${not status_flag}">
-			                    	&nbsp;|&nbsp;<a href='#' onclick="enableUser(${user.userId})">启用</a> 
+			                    	&nbsp;|&nbsp;<a href='#' onclick="enableUser(${user.userId})">启用</a>
 			                    </c:if>
 								&nbsp;|&nbsp;<a href='#' onclick="del(${user.userId})">删除</a>
 								</c:if>
@@ -98,8 +98,9 @@ request.setCharacterEncoding("UTF-8");
 			</c:if>					
           </tbody>
 		</table>
-	   <script type="text/javascript">
+	   <script>
 		function disableUser(userId){
+			console.debug("sss");
 			$.ajax({
 				url:"${pageContext.request.contextPath }/disableUser.action",
 				type:"post",
@@ -176,7 +177,7 @@ request.setCharacterEncoding("UTF-8");
 		}
 	</script>
     </div>
-    <script type="text/javascript">
+    <script >
 	$('.tablelist tbody tr:odd').addClass('odd');
 	</script>
 </body>

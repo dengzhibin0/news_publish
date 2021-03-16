@@ -11,4 +11,6 @@ import java.util.List;
  */
 public interface RoleService {
     public List<Role> findRoleList();
+
+    public Role findRoleWithUsersByRoleId(Integer roleId);
 }

@@ -155,6 +155,7 @@ public class UserController {
     @RequestMapping(value = "/disableUser.action")
     @ResponseBody
     public User disableUser(@RequestBody User user, Model model) {
+        System.out.println(user);
         int rows = userService.setUserStatus(user);
         if (rows>0) {
             return user;

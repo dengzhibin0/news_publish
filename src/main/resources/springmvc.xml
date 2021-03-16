@@ -29,4 +29,19 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
+    <!-- 配置拦截器 -->
+    <mvc:interceptors>
+        <!-- 使用bean直接定义在<mvc:interceptors>下面的Interceptor将拦截所有请求 -->
+        <!-- <bean class="com.ssm.interceptor.LoginInterceptor" /> -->
+        <mvc:interceptor>
+            <!-- 配置拦截器作用的路径 -->
+            <mvc:mapping path="/**" />
+            <!-- 配置不需要拦截器作用的路径 -->
+            <mvc:exclude-mapping path="/index.action"/>
+            <mvc:exclude-mapping path="/findNewsByCategoryIdPage.action"/>
+            <mvc:exclude-mapping path="/findFrontNewsByNewsId.action"/>
+            <bean class="com.dzb.interceptor.LoginInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>
