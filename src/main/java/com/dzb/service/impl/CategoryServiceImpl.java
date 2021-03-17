@@ -27,7 +27,27 @@ public class CategoryServiceImpl implements CategoryService {
 
     //根据新闻类别ID查询新闻类别
     @Override
-    public Category findCategoryById(Integer categoryId){
+    public Category getCategoryById(Integer categoryId){
         return this.categoryDao.getCategoryById(categoryId);
+    }
+
+    @Override
+    public Category getCategoryByCategoryName(String categoryName) {
+        return this.categoryDao.getCategoryByCategoryName(categoryName);
+    }
+
+    @Override
+    public int addCategory(Category category) {
+        return this.categoryDao.addCategory(category);
+    }
+
+    @Override
+    public int editCategory(Category category) {
+        return categoryDao.updateCategory(category);
+    }
+
+    @Override
+    public int delCategory(Integer categoryId) {
+        return categoryDao.delCategory(categoryId);
     }
 }

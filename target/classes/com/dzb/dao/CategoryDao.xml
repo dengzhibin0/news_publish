@@ -12,4 +12,35 @@
 	<select id="getCategoryById" parameterType="Integer" resultType="Category">
 		select * from t_category where categoryId=#{categoryId}
 	</select>
+
+	<!--通过登录账号查询用户 -->
+	<select id="getCategoryByCategoryName" parameterType="String" resultType="Category">
+		select * from t_category where categoryName=#{categoryName} limit 0,1
+	</select>
+
+	<!--添加新闻类别 -->
+	<insert id="addCategory" parameterType="Category">
+		insert into t_category(
+			categoryName
+		)
+		values(
+			#{categoryName}
+		)
+	</insert>
+
+	<!-- 更新新闻类别 -->
+	<update id="updateCategory" parameterType="Category">
+		update t_category
+		<set>
+			<if test="categoryName!=null and categoryName!=''">
+				categoryName=#{categoryName},
+			</if>
+		</set>
+		where categoryId=#{categoryId}
+	</update>
+
+	<!--删除新闻类别 -->
+	<delete id="delCategory" parameterType="Integer">
+		delete from t_category where categoryId=#{categoryId}
+	</delete>
 </mapper>

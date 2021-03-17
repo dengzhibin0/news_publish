@@ -15,4 +15,16 @@ public interface CategoryDao {
 
     //根据新闻类别ID查询新闻类别
     public Category getCategoryById(Integer categoryId);
+
+    // 通过用户登录名查询用户
+    public Category getCategoryByCategoryName(String categoryName);
+
+    // 添加新闻类别
+    public int addCategory(Category category);
+
+    // 更新新闻类别
+    public int updateCategory(Category category);
+
+    // 删除新闻类别
+    public int delCategory(Integer categoryId);
 }

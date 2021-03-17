@@ -108,6 +108,7 @@ public class NewsController {
 			return "news/edit_news";
 		}
 	}
+
 	// 转向修改新闻页面
 	@RequestMapping(value = "/toEditNews.action")
 	public String toEditNews(Integer newsId, Model model) {
@@ -120,6 +121,7 @@ public class NewsController {
 		}
 		return "news/edit_news";
 	}
+
 	//删除新闻
 	@RequestMapping(value = "/delNews.action")
 	@ResponseBody
@@ -132,6 +134,7 @@ public class NewsController {
 			return news;
 		}
 	}
+
 	//根据新闻类别ID查询新闻分页（用于前台首页）
 	@RequestMapping(value = "/index.action")
 	public String index(HttpServletRequest request, HttpServletResponse response, String keywords, Integer newsListCategoryId,	@RequestParam(defaultValue = "1") Integer currentPage, @RequestParam(defaultValue = "10") Integer pageSize,	Model model) throws ServletException, IOException {
@@ -142,11 +145,12 @@ public class NewsController {
 		model.addAttribute("pb2", pb2);
 		return "../../first";
 	}
+
 	//根据新闻类别ID查询新闻分页（用于前台新闻列表页）
 	@RequestMapping(value = "/findNewsByCategoryIdPage.action")
 	public String findNewsByCategoryIdPage(HttpServletRequest request, HttpServletResponse response, String keywords, Integer newsListCategoryId,	@RequestParam(defaultValue = "1") Integer currentPage, @RequestParam(defaultValue = "1") Integer pageSize,	Model model){
 		// 获取角色列表
-		Category category = categoryService.findCategoryById(newsListCategoryId);
+		Category category = categoryService.getCategoryById(newsListCategoryId);
 		model.addAttribute("category", category);
 		// 获取用户PageBean实例
 		PageBean<News> pb = newsService.findNewsByPage(keywords, newsListCategoryId, currentPage, pageSize);
@@ -156,6 +160,7 @@ public class NewsController {
 		model.addAttribute("pageSize", pageSize);
 		return "../../list";
 	}
+
 	//查询新闻（用于前台新闻内容页）
 	@RequestMapping(value = "/findFrontNewsByNewsId.action")
 	public String findFrontNewsByNewsId(Integer newsId,Model model) {

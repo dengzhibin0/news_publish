@@ -209,22 +209,4 @@ public class UserController {
         return "../../login";
     }
 
-    //
-    @RequestMapping(value="/top.action")
-    public String top(){
-        return "top";
-    }
-
-    //
-    @RequestMapping(value="/left.action")
-    public String left(){
-        return "left";
-    }
-
-    //
-    @RequestMapping(value="/right.action")
-    public String right(){
-        return "right";
-    }
-
 }

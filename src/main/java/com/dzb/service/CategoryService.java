@@ -14,5 +14,16 @@ public interface CategoryService {
     public List<Category> findCategoryList();
 
     //根据新闻类别ID查询新闻类别
-    public Category findCategoryById(Integer categoryId);
+    public Category getCategoryById(Integer categoryId);
+
+    public Category getCategoryByCategoryName(String categoryName);
+
+    // 添加新闻类别
+    public int addCategory(Category category);
+
+    // 更新新闻类别
+    public int editCategory(Category category);
+
+    // 删除新闻类别
+    public int delCategory(Integer categoryId);
 }
