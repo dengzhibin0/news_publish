@@ -25,6 +25,12 @@ public class CategoryServiceImpl implements CategoryService {
         return this.categoryDao.selectCategoryList();
     }
 
+
+    @Override
+    public List<Category> findCategoryListByKeyword(String keyword) {
+        return this.categoryDao.getCategoryByKeyword(keyword);
+    }
+
     //根据新闻类别ID查询新闻类别
     @Override
     public Category getCategoryById(Integer categoryId){
@@ -39,11 +45,6 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public int addCategory(Category category) {
         return this.categoryDao.addCategory(category);
-    }
-
-    @Override
-    public int editCategory(Category category) {
-        return categoryDao.updateCategory(category);
     }
 
     @Override

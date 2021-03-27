@@ -25,7 +25,7 @@ public class NewsServiceImpl implements NewsService {
         int totalPage=(int) Math.ceil(count*1.0/pageSize);
         List<News> newsList=newsDao.findNewsList(keywords,newsListCategoryId,(currentPage-1)*pageSize,pageSize);
 
-        PageBean<News> pb=new PageBean<>();
+        PageBean<News> pb=new PageBean<News>();
         pb.setCount(count);
         if(currentPage==0) currentPage=1;
         pb.setCurrentPage(currentPage);

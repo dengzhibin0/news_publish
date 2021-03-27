@@ -33,6 +33,16 @@ public class CategoryController {
         return "category/category_list";
     }
 
+    // 根据关键词查询新闻类别列表
+    @RequestMapping(value = "/findCategoryListByKeyword.action")
+    public String findCategoryListByKeyword(String keywords,Model model) {
+        List<Category> categoryList=categoryService.findCategoryListByKeyword(keywords);
+        if (categoryList != null) {
+            model.addAttribute("categoryList", categoryList);
+        }
+        return "category/category_list";
+    }
+
     //根据新闻类别ID查询新闻类别
     @RequestMapping(value = "/getCategoryById.action")
     public String getCategoryById(Integer categoryId,Model model) {
@@ -88,37 +98,12 @@ public class CategoryController {
         }
     }
 
-    // 转向修改新闻类别页面
-    @RequestMapping(value = "/toEditCategory.action")
-    public String toEditCategory(Integer categoryId, Model model) {
-        //通过categoryId获取新闻类别
-        Category category = categoryService.getCategoryById(categoryId);
-        if (category != null) {
-            model.addAttribute("category", category);
-            return "category/edit_category";
-        }else{
-            return "redirect:findCategoryList.action";
-        }
-    }
-
-    //修改新闻类别
-    @RequestMapping(value = "/editCategory.action", method = RequestMethod.POST)
-    public String editCategory(Category category, Model model) {
-        int rows = categoryService.editCategory(category);
-        if (rows > 0) {
-            // 添加成功，转向新闻类别列表页面
-            return "redirect:findCategoryList.action";
-        } else {
-            model.addAttribute("category", category);
-            // 修改失败，转回修改新闻类别页面
-            return "category/edit_category";
-        }
-    }
-
     //删除新闻类别（前台页面中通过ajax方式调用此方法）
     @RequestMapping(value = "/delCategory.action")
     @ResponseBody
     public Category delCategory(@RequestBody Category category, Model model) {
+        System.out.println(category);
+        System.out.println("ddhsi");
         int rows = categoryService.delCategory(category.getCategoryId());
         if (rows>0) {
             return category;

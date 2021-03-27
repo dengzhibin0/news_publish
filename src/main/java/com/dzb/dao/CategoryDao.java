@@ -13,6 +13,9 @@ public interface CategoryDao {
     // 查询所有新闻类别
     public List<Category> selectCategoryList();
 
+    // 根据关键词查询新闻类别列表
+    public List<Category> getCategoryByKeyword(String keyword);
+
     //根据新闻类别ID查询新闻类别
     public Category getCategoryById(Integer categoryId);
 
@@ -22,8 +25,6 @@ public interface CategoryDao {
     // 添加新闻类别
     public int addCategory(Category category);
 
-    // 更新新闻类别
-    public int updateCategory(Category category);
 
     // 删除新闻类别
     public int delCategory(Integer categoryId);

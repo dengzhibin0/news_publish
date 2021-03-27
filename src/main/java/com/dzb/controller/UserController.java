@@ -201,6 +201,12 @@ public class UserController {
         return "../../login";
     }
 
+    //跳转至首页
+    @RequestMapping(value="/main.action")
+    public String main(){
+        return "main";
+    }
+
     //退出登录
     @RequestMapping(value="/logout.action")
     public String logout(HttpSession session){

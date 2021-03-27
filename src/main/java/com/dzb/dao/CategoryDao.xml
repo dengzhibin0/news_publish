@@ -8,6 +8,11 @@
 		select * from t_category 
 	</select>
 
+	<!--根据关键词查询新闻类别列表 -->
+	<select id="getCategoryByKeyword" parameterType="String" resultType="Category">
+		select * from t_category where categoryName like "%"#{keyword}"%"
+	</select>
+
 	<!--通过categoryId查询新闻类别 -->
 	<select id="getCategoryById" parameterType="Integer" resultType="Category">
 		select * from t_category where categoryId=#{categoryId}
@@ -27,17 +32,6 @@
 			#{categoryName}
 		)
 	</insert>
-
-	<!-- 更新新闻类别 -->
-	<update id="updateCategory" parameterType="Category">
-		update t_category
-		<set>
-			<if test="categoryName!=null and categoryName!=''">
-				categoryName=#{categoryName},
-			</if>
-		</set>
-		where categoryId=#{categoryId}
-	</update>
 
 	<!--删除新闻类别 -->
 	<delete id="delCategory" parameterType="Integer">
